@@ -49,3 +49,4 @@ Push to a **public** GitHub repo and submit the link, plus a short **write-up**
 - When would you use a mapped type vs a utility type like `Pick`?
 - What is the difference between `unknown` and `any`, and why is a type guard safer than a cast?
 - How does the `never` exhaustiveness check in the reducer protect you?
+Loom : https://www.loom.com/share/b5c8f1c8e7024fcd879a45a3b11613b0
