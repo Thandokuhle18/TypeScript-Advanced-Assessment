@@ -10,16 +10,18 @@
  *   { ok: true; value: T } | { ok: false; error: E } */
 
 // TODO
-export type Result<T, E> = ___;
+export type Result<T, E> = { ok: true; value: T } | { ok: false; error: E };
 
 // Helpers:
 // TODO: return { ok: true, value }
 export function ok<T>(value: T): Result<T, never> {
   // TODO
+  return { ok: true, value }
 }
 // TODO: return { ok: false, error }
 export function err<E>(error: E): Result<never, E> {
   // TODO
+  return { ok: false, error }
 }
 
 /* ---- 7b. Safe division returning a Result ----
@@ -29,6 +31,11 @@ export function err<E>(error: E): Result<never, E> {
 // TODO
 export function divide(a: number, b: number): Result<number, string> {
   // TODO
+    if (b === 0) {
+    return err("division by zero");
+  }
+
+  return ok(a / b);
 }
 
 /* ---- 7c. Async: typed fetch simulation ----
@@ -39,6 +46,14 @@ export function divide(a: number, b: number): Result<number, string> {
  * Type the return as Promise<Result<{ id: number; total: number }, string>>. */
 
 // TODO: async, correct Promise<Result<...>> return type
-export async function loadOrder(id: number): ___ {
+export async function loadOrder(id: number): Promise<Result<{ id: number; total: number }, string>> {
   // TODO
+    if (id <= 0) {
+    return err("invalid id");
+  }
+
+  return ok({
+    id,
+    total: id * 10,
+  });
 }
